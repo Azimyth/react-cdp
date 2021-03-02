@@ -1,7 +1,44 @@
-$title-color: green;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import './Styles/common/variables.scss';
 
-h1 {
-    text-align: center;
-    font-size: 30px;
-    color: $title-color;
+*,
+*::after,
+*:before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: $body-background-color;
+    font: 400 $base-font-size $base-font-family;
+    line-height: 1.2;
+    color: $base-text-color;
+}
+
+[id="root"] {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+a {
+    color: $base-link-color;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1370px;
 }

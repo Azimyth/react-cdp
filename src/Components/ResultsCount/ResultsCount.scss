@@ -1,0 +1,10 @@
+@import '../../Styles/common/variables.scss';
+
+.results-count {
+    display: block;
+    margin: 0 0 20px;
+    
+    @media (min-width: $laptop) {
+        font-size: $medium-font-size;
+    }
+}

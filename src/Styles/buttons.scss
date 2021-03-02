@@ -1,0 +1,23 @@
+@import './common/variables.scss';
+
+.button {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px 20px;
+    border-radius: $base-border-radius;
+    border: none;
+    text-transform: uppercase;
+    background-color: rgb(85 85 85 / 50%);
+    font-size: $small-font-size;
+    color: $primary-color;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+        background-color: rgb(85 85 85 / 100%);
+    }
+
+    @media (min-width: $tablet) {
+        font-size: $medium-font-size;
+    }
+}

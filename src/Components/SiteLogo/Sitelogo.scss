@@ -1,0 +1,15 @@
+@import '../../Styles/common/variables.scss';
+
+.site-logo {
+    display: inline-block;
+    width: 100px;
+    vertical-align: top;
+
+    @media (min-width: $tablet) {
+        width: 150px;
+    }
+
+    svg {
+        width: 100%;
+    }
+}
