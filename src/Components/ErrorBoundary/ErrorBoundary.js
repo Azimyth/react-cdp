@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ErrorBoundary = props => {
-    const ErrorMessage = () => <h2>Something went wrong...</h2>;
-    let isEverythingIsOk = true;
+class ErrorBoundary extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
 
-    return <>{isEverythingIsOk ? props.children : ErrorMessage}</>;
+    static getDerivedStateFromError(error) {
+        return { hasError: true };
+    }
+
+    errorMessage() {
+        return <h2>Something went wrong...</h2>
+    } 
+
+    render() {
+        if (this.state.hasError) {
+            return this.errorMessage();
+        }
+        return this.props.children;
+    }
 }
+
 
 export default ErrorBoundary;
