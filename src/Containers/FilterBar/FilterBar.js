@@ -1,11 +1,11 @@
 import React from 'react';
-import Filters from '../../Components/Filters/Filters';
-import Sorting from '../../Components/Sorting/Sorting';
-import data from '../../MockData.json';
+import PropTypes from 'prop-types';
+import Filters from '../../components/Filters/Filters';
+import Sorting from '../../components/Sorting/Sorting';
 import './FilterBar.scss';
 
-const FilterBar = () => {
-    const {sort_options, available_filters} = data;
+const FilterBar = props => {
+    const {sort_options, available_filters} = props.options;
     
     return (
         <div className="filters-bar">
@@ -13,6 +13,16 @@ const FilterBar = () => {
             <Sorting sortOptions={sort_options} />
         </div>
     )
+};
+
+FilterBar.propTypes = {
+    availableFilters: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        active: PropTypes.bool
+    })),
+    sortOptions: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string
+    }))
 };
 
 export default FilterBar;

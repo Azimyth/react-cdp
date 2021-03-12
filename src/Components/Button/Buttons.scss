@@ -1,0 +1,50 @@
+@import '../../styles/common/variables.scss';
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: $base-border-radius;
+    vertical-align: top;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: $small-font-size;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    @media (min-width: $tablet) {
+        font-size: $medium-font-size;
+    }
+
+    &.default {
+        background-color: transparent;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+    
+        &:hover {
+            background-color: $primary-color;
+            color: $white;
+        }
+    }
+
+    &.primary {
+        background-color: $primary-color;
+        border: 1px solid $primary-color;
+        color: $white;
+    
+        &:hover {
+            background-color: $dark-red;
+        }
+    }
+    
+    &.secondary {
+        border: 1px solid rgb(85 85 85 / 50%);
+        background-color: rgb(85 85 85 / 50%);
+        color: $primary-color;
+
+        &:hover {
+            background-color: rgb(85 85 85 / 100%);
+        }
+    }
+}
+
+

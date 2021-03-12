@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ResultsCount.scss';
-import data from '../../MockData.json';
 
-const ResultsCount = () => <span className="results-count"><strong>{data.count}</strong> movies found</span>
+const ResultsCount = props => <span className="results-count"><strong>{props.count}</strong> movies found</span>
+
+ResultsCount.propTypes = {
+    count: PropTypes.number
+}
 
 export default ResultsCount;

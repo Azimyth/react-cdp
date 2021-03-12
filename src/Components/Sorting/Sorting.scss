@@ -1,4 +1,4 @@
-@import '../../Styles/common/variables.scss';
+@import '../../styles/common/variables.scss';
 
 .sorting {
     display: flex;
@@ -10,45 +10,25 @@
     @media (min-width: $laptop) {
         font-size: $medium-font-size;
     }
-
-    select {
-        padding: 0 20px 0 0;
-        border: none;
-        background: none;
-        appearance: none;
-        text-transform: uppercase;
-        background: none;
-        font-size: $base-font-size;
+    
+    .drop-box {
+        margin-left: 20px;
         color: $white;
+
+        &:before {
+            right: 0;
+        }
+    }
+    
+    select {
+        font-size: $base-font-size;
 
         @media (min-width: $laptop) {
             font-size: $medium-font-size;
         }
         
-        &::-ms-expand {
-            display: none;
-        }
-
         option {
             color: $solid-black;
         }
-    }
-}
-
-.sorting-box {
-    position: relative;
-    margin: 0 0 0 20px;
-
-    &:before {
-        content:'';
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid $primary-color;
-        transform: translateY(-50%);
     }
 }

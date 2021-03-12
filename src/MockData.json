@@ -185,19 +185,6 @@
          "active": false
       }
     ],
-   "sort_options": [
-      {
-         "value": "Alphabetical A-Z",
-         "order": "Ascending"
-      },
-      {
-         "value": "Alphabetical Z-A",
-         "order": "Descending"
-      },
-      {
-         "value": "Release Date",
-         "order": "Descending"
-      }
-    ],
-   "count": "9"
+   "sort_options": ["Alphabetical A-Z", "Alphabetical Z-A", "Release Date"],
+   "count": 9
 }

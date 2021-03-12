@@ -1,14 +1,18 @@
 import React from 'react';
-import AddMovie from '../../Components/AddMovie/AddMovie';
-import Sitelogo from '../../Components/SiteLogo/Sitelogo';
+import Button from '../../components/Button/Button';
+import Sitelogo from '../../components/SiteLogo/Sitelogo';
 import Container from '../Container';
 import './Header.scss';
 
-const Header = () => (
+const Header = props => (
     <header className="site-header">
         <Container>
             <Sitelogo />
-            <AddMovie />
+            <Button 
+                label="+ Add Movie" 
+                btnType="secondary" 
+                handler={() => props.toggleHandler('add')} 
+            />
         </Container>
     </header>
 );

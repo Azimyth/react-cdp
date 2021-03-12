@@ -1,5 +1,5 @@
 import React from 'react';
-import Sitelogo from '../../Components/SiteLogo/Sitelogo';
+import Sitelogo from '../../components/SiteLogo/Sitelogo';
 import Container from '../Container';
 import './Footer.scss';
 

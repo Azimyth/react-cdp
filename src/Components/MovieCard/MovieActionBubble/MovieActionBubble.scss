@@ -1,0 +1,11 @@
+@import '../../../Styles/common/variables.scss';
+
+.movie-action-bubble {
+    width: 35px;
+    height: 35px;
+    border: 0;
+    border-radius: 50%;
+    background-color: $dark-gray;
+    color: $white;
+    cursor: pointer;
+}
