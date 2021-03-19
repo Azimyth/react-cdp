@@ -1,44 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import './Modal.scss';
 import Icon from '../Icon/Icon';
 
-class Modal extends Component {
-    constructor(props) {
-        super(props);
-        this.modalRoot = document.getElementById('modal-root');
-
-        if (!this.modalRoot) {
-            this.modalRoot = document.createElement('div');
-            this.modalRoot.id = 'modal-root';
-            document.body.appendChild(this.modalRoot);
-        }
+const Modal = props => {
+    let modalRoot = document.getElementById('modal-root');
+    
+    if (!modalRoot) {
+        modalRoot = document.createElement('div');
+        modalRoot.id = 'modal-root';
+        document.body.appendChild(modalRoot);
     }
 
-    componentDidMount() {
+    useEffect(() => {
         document.body.classList.add('modal-open');
-    }
 
-    componentWillUnmount() {
-        document.body.classList.remove('modal-open');
-    }
+        return () => document.body.classList.remove('modal-open');
+    }, []);
 
-    render() {
-        const modal = (
-            <div className="modal">
-                <div className="modal__content">
-                    <button onClick={this.props.toggleHandler} className="modal__close-btn">
-                        <Icon size={35} iconName="close" />
-                    </button>
-                    {this.props.children}
-                </div>
+    const modal = (
+        <div className="modal">
+            <div className="modal__content">
+                <button onClick={props.toggleHandler} className="modal__close-btn">
+                    <Icon size={35} iconName="close" />
+                </button>
+                {props.children}
             </div>
-        );
+        </div>
+    );
 
-        return ReactDOM.createPortal(modal, this.modalRoot);
-    }
-};
+    return ReactDOM.createPortal(modal, modalRoot);
+}
 
 Modal.propTypes = {
     toggleHandler: PropTypes.func

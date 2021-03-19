@@ -1,65 +1,58 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Hero from './components/Hero/Hero';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import ResultsCount from './components/ResultsCount/ResultsCount';
 import MoviesList from './containers/MoviesList/MoviesList';
 import Footer from './layouts/Footer/Footer';
 import Header from './layouts/Header/Header';
 import MainContent from './layouts/Main';
 import FilterBar from './containers/FilterBar/FilterBar';
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import MovieDetais from './components/MovieDetails/MovieDetails';
 import withMovieAction from './components/withMovieAction/withMovieAction';
-import './App.scss';
+import { useToggle } from './components/Hooks/useToggle';
 
 import data from './MockData.json';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            movies: data.movies,
-            isOpenModal: false,
-            modalContentType: null,
-            movieId: null
-        }
-        this.modalHandler = this.toggleModal.bind(this)
-    }
+const App = () => {
+    const {movies, count} = data;
+    const isHomePage = false;
 
-    toggleModal(contentType, movieId) {
-        this.setState(state => ({
-            isOpenModal: !state.isOpenModal,
-            modalContentType: contentType,
-            movieId: movieId
-        }))
-    }
+    const [isOpenModal, toggleModal] = useToggle(false);
+    const [modalContent, setModalContent] = useState({
+        type: '',
+        id: null
+    });
 
-    render() {
-        const { count } = data;
-        const Modal = withMovieAction(this.state.modalContentType, this.state.movieId);
+    const modalContentHandler = (type, id = null) => {
+        setModalContent({type,id});
+        toggleModal();
+    };
 
-        return (
-            <>
-                <Header toggleHandler={this.modalHandler} />
-                <Hero />
-                <MainContent>
-                    <FilterBar options={data} />
-                    <ResultsCount count={count} />
-                    <ErrorBoundary>
-                        <MoviesList 
-                            movies={this.state.movies} 
-                            toggleHandler={this.modalHandler}
-                        />
-                    </ErrorBoundary>
-                </MainContent>
-                <Footer />
-                { this.state.isOpenModal && 
-                    <Modal 
-                        toggleHandler={this.modalHandler} 
-                        movies={this.state.movies} 
+    const Modal = withMovieAction(modalContent.type, modalContent.id);
+
+    return (
+        <>
+            <Header toggleHandler={modalContentHandler} flag={isHomePage} />
+            { isHomePage ? <Hero /> : <MovieDetais movie={movies[2]}/> }
+            <MainContent>
+                <FilterBar options={data} />
+                <ResultsCount count={count} />
+                <ErrorBoundary>
+                    <MoviesList 
+                        movies={movies}
+                        toggleHandler={modalContentHandler}
                     />
-                }
-            </>
-        )
-    }
+                </ErrorBoundary>
+            </MainContent>
+            <Footer />
+            { isOpenModal && 
+                <Modal 
+                    toggleHandler={modalContentHandler}
+                    movies={movies}
+                />
+            }
+        </>
+    )
 }
 
 export default App;

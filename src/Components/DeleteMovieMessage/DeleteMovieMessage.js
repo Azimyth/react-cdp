@@ -6,7 +6,9 @@ const DeleteMessage = props => (
     <>
         <p>{props.title}</p>
         <div className="button-wrap">
-            <Button label="Confirm" btnType="primary" />
+            <Button btnType="primary" >
+                Confirm
+            </Button>
         </div>
     </>
 );

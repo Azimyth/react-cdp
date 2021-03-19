@@ -4,13 +4,13 @@ import './Buttons.scss';
 
 const Button = props => {
     const classList = `${props.btnType} button`;
-    const { handler } = props;
+    const { handler, children } = props;
 
     return (
         <button 
             className={classList}
             onClick={handler}>
-            {props.label}
+            {children}
         </button>
     )
 }
@@ -20,9 +20,9 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+    handler: PropTypes.func,
     btnType: PropTypes.string,
-    label: PropTypes.string,
-    handler: PropTypes.func
+    childer: PropTypes.string
 };
 
 export default Button;

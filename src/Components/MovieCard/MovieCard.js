@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieActionBubble from './MovieActionBubble/MovieActionBubble';
 import './MovieCard.scss';
+import MoviePoster from './MoviePoster';
+import MovieTitle from './MovieTitle';
 
 const MovieCard = props => {
     const {poster, title, genres, publishDate, toggleHandler, id} = props;
 
     return (
         <article className="movie-card">
-            <img className="movie-card__poster" src={poster} />
+            <MoviePoster poster={poster} alt={title} />
             <div className="movie-card__content">
                 <div className="movie-card__description">
-                    <h3 className="movie-card__title">{title}</h3>
+                    <MovieTitle title={title}/>
                     <p className="movie-card__genres">{genres.join(', ')}</p>
                 </div>
                 <span className="movie-card__release-date">{publishDate.slice(0, 4)}</span>
