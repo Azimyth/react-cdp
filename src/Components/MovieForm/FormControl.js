@@ -4,7 +4,7 @@ import './FormControl.scss';
 import DropList from '../DropList/DropList';
 
 const FormControl = props => {
-    const {label, name, type, placeholder, value, optionsList, disabled} = props;
+    const { label, name, type, placeholder, value, optionsList, disabled } = props;
     
     const input = <input
         type={type}
@@ -17,7 +17,7 @@ const FormControl = props => {
     return (
         <label className="form-control">
             {label}
-            {props.type === 'select' ? <DropList options={optionsList} /> : input}
+            {type === 'select' ? <DropList options={optionsList} /> : input}
         </label>
     )
 };

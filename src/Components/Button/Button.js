@@ -2,15 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Buttons.scss';
 
-const Button = props => {
-    const classList = `${props.btnType} button`;
-    const { handler } = props;
+const Button = ({ handler, children, btnType}) => {
+    const classList = `${btnType} button`;
 
     return (
-        <button 
-            className={classList}
-            onClick={handler}>
-            {props.label}
+        <button className={classList} onClick={handler}>
+            {children}
         </button>
     )
 }
@@ -20,9 +17,8 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-    btnType: PropTypes.string,
-    label: PropTypes.string,
-    handler: PropTypes.func
+    handler: PropTypes.func,
+    btnType: PropTypes.string
 };
 
 export default Button;

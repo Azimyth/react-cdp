@@ -1,0 +1,76 @@
+@import '../../styles/common/variables.scss';
+
+.movie-details {
+    position: relative;
+    padding: 100px 0 50px;
+    background: rgb(0 0 0 / 50%);
+    font-weight: 300;
+
+    .container {
+        z-index: 2;
+
+        @media (min-width: $tablet) {
+            display: flex;
+            align-items: flex-start;
+        }
+    }
+
+    .movie-poster {
+        display: block;
+        margin: 0 auto 30px;
+
+        @media (min-width: $tablet) {
+            flex: 0 0 250px;
+            margin: 0 50px 0 0;
+            max-width: 250px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        flex: 1;
+
+        @media (min-width: $tablet) {
+            padding: 25px 50px 0 0;
+        }
+    }
+
+    .movie-title {
+        margin: 0 15px 15px 0;
+        max-width: calc(100% - 60px);
+        font-weight: 300;
+        font-size: $large-font-size;
+    }
+
+    &__rate {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        width: 45px;
+        height: 45px;
+        border: 1px solid $light-gray;
+        border-radius: 50%;
+        font-size: $medium-font-size;
+        color: $green;
+    }
+
+    &__tagline {
+        margin-bottom: 25px;
+        width: 100%;
+    }
+
+    &__release-date,
+    &__runtime {
+        margin: 0 15px 25px 0;
+        font-size: $medium-font-size + 5px;
+        color: $primary-color;
+    }
+
+    &__overview {
+        margin: 0;
+        line-height: 1.5;
+    }
+}

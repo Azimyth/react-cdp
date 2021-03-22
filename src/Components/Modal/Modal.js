@@ -1,44 +1,37 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import './Modal.scss';
 import Icon from '../Icon/Icon';
 
-class Modal extends Component {
-    constructor(props) {
-        super(props);
-        this.modalRoot = document.getElementById('modal-root');
+const Modal = ({ toggleHandler, children }) => {
+    const modalRef = useRef();
 
-        if (!this.modalRoot) {
-            this.modalRoot = document.createElement('div');
-            this.modalRoot.id = 'modal-root';
-            document.body.appendChild(this.modalRoot);
+    useEffect(() => {
+        document.body.classList.add('modal-open');
+
+        return () => document.body.classList.remove('modal-open');
+    }, []);
+
+    const closeModal = e => {
+        if (modalRef.current === e.target) {
+            toggleHandler();
         }
     }
 
-    componentDidMount() {
-        document.body.classList.add('modal-open');
-    }
-
-    componentWillUnmount() {
-        document.body.classList.remove('modal-open');
-    }
-
-    render() {
-        const modal = (
-            <div className="modal">
-                <div className="modal__content">
-                    <button onClick={this.props.toggleHandler} className="modal__close-btn">
-                        <Icon size={35} iconName="close" />
-                    </button>
-                    {this.props.children}
-                </div>
+    const modal = (
+        <div className="modal" ref={modalRef} onClick={closeModal}>
+            <div className="modal__content">
+                <button onClick={toggleHandler} className="modal__close-btn">
+                    <Icon size={35} iconName="close" />
+                </button>
+                {children}
             </div>
-        );
+        </div>
+    );
 
-        return ReactDOM.createPortal(modal, this.modalRoot);
-    }
-};
+    return ReactDOM.createPortal(modal, document.body);
+}
 
 Modal.propTypes = {
     toggleHandler: PropTypes.func

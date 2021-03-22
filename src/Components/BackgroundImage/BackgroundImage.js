@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BackgroundImage.scss';
 
-const BackgroundImage = props => (
+const BackgroundImage = ({ src, altText }) => (
     <span className="bg-image">
-        <img src={props.src} alt={props.altText} />
+        <img src={src} alt={altText} />
     </span>
 );
 

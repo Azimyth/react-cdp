@@ -1,7 +1,7 @@
 import React from 'react';
-import DeleteMessage from '../DeleteMovieMessage/DeleteMovieMessage';
 import Modal from '../Modal/Modal';
 import MovieForm from '../MovieForm/MovieForm';
+import DeleteMessage from '../DeleteMovieMessage/DeleteMovieMessage';
 
 const withMovieAction = (contentType, id = null) => {
     const WithMovieAction = props => {

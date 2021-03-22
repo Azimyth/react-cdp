@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import DropList from '../DropList/DropList';
 import './Sorting.scss';
 
-const Sorting = props => (
+const Sorting = ({ sortOptions }) => (
     <label className="sorting">
         Sort by
-        <DropList options={props.sortOptions} />
+        <DropList options={sortOptions} />
     </label>
 );
 

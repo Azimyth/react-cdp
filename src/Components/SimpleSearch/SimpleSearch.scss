@@ -1,0 +1,17 @@
+@import '../../styles/common/variables';
+
+.simple-search {
+    display: flex;
+
+    .search-control {
+        height: 30px;
+        font-size: $base-font-size;
+    }
+
+    button {
+        padding: 0;
+        background: none;
+        border: 0;
+        color: $primary-color;
+    }
+}

@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MovieActionBubble from './MovieActionBubble/MovieActionBubble';
 import './MovieCard.scss';
+import MoviePoster from './MoviePoster';
+import MovieTitle from './MovieTitle';
 
-const MovieCard = props => {
-    const {poster, title, genres, publishDate, toggleHandler, id} = props;
+const MovieCard = ({ movie, toggleHandler }) => {
+    const { poster_path: poster, title, genres, release_date: publishDate, id } = movie;
 
     return (
         <article className="movie-card">
-            <img className="movie-card__poster" src={poster} />
+            <MoviePoster poster={poster} alt={title} />
             <div className="movie-card__content">
                 <div className="movie-card__description">
-                    <h3 className="movie-card__title">{title}</h3>
+                    <MovieTitle title={title}/>
                     <p className="movie-card__genres">{genres.join(', ')}</p>
                 </div>
                 <span className="movie-card__release-date">{publishDate.slice(0, 4)}</span>
@@ -22,11 +24,13 @@ const MovieCard = props => {
 };
 
 MovieCard.propTypes = {
-    poster: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    publishDate: PropTypes.string.isRequired,
-    id: PropTypes.number,
+    movies: PropTypes.arrayOf(PropTypes.shape({
+        poster_path: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        genres: PropTypes.arrayOf(PropTypes.string),
+        release_date: PropTypes.string.isRequired,
+        id: PropTypes.number
+    })),
     toggleHandler: PropTypes.func
 };
 

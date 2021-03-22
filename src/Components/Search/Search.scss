@@ -25,7 +25,11 @@
     border-radius: $base-border-radius;
     font-size: $base-font-size;
     border: none;
-    color: $gray;
+    color: $white;
+
+    &::placeholder {
+        color: $gray;
+    }
     
     @media (min-width: $tablet) {
         margin: 0 20px 0 0;
