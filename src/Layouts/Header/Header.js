@@ -5,15 +5,15 @@ import Sitelogo from '../../components/SiteLogo/Sitelogo';
 import Container from '../Container';
 import './Header.scss';
 
-const Header = props => (
+const Header = ({ flag, toggleHandler }) => (
     <header className="site-header">
         <Container>
             <Sitelogo />
-            { props.flag 
-            ?  <Button btnType="secondary" handler={() => props.toggleHandler('add')}>
+            { flag 
+                ? <Button btnType="secondary" handler={() => toggleHandler('add')}>
                 + Add Movie
                 </Button>
-            :   <SimpleSearch />
+                : <SimpleSearch />
             }
         </Container>
     </header>

@@ -7,8 +7,8 @@ import BackgroundImage from '../BackgroundImage/BackgroundImage';
 import background from '../../assets/hero-full.jpg';
 import './MovieDetails.scss'
 
-const MovieDetais = props => {
-    const {poster_path, title, release_date, vote_average, tagline, overview, runtime} = props.movie;
+const MovieDetais = ({ movie }) => {
+    const { poster_path, title, release_date, vote_average, tagline, overview, runtime } = movie;
 
     return (
         <article className="movie-details">

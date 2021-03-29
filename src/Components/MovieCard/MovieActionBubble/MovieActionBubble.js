@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useToggle } from '../../../hooks/useToggle';
 import MovieActionDrop from '../MovieActionDrop/MovieActionDrop';
 import { useToggle } from '../../Hooks/useToggle';
 import Icon from '../../Icon/Icon';
 import './MovieActionBubble.scss';
 
-const MovieActionBubble = props => {
-    const {toggleHandler, movieId} = props;
-    const [openDrop, setOpenDrop] = useToggle(false);
+const MovieActionBubble = ({ toggleHandler, movieId }) => {
+    const [isOpenDrop, setOpenDrop] = useToggle(false);
 
     return (
         <>
             <button className="movie-action-bubble" onClick={setOpenDrop}>
                 <Icon size={20} iconName="options" />
             </button>
-            {openDrop && 
+            {isOpenDrop && 
                 <MovieActionDrop 
                     dropHandler={setOpenDrop}
                     modalHandler={toggleHandler}

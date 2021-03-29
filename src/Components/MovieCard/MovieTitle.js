@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MovieTitle = props => (
-    <h3 className="movie-title">{props.title}</h3>
+const MovieTitle = ({ title }) => (
+    <h3 className="movie-title">{title}</h3>
 )
 
 MovieTitle.propTypes = {

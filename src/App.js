@@ -9,13 +9,16 @@ import MainContent from './layouts/Main';
 import FilterBar from './containers/FilterBar/FilterBar';
 import MovieDetais from './components/MovieDetails/MovieDetails';
 import withMovieAction from './components/withMovieAction/withMovieAction';
-import { useToggle } from './components/Hooks/useToggle';
+import { useToggle } from './hooks/useToggle';
 
 import data from './MockData.json';
 
 const App = () => {
     const {movies, count} = data;
+
+    //Adding this to show movie details page
     const isHomePage = false;
+    const MOVIE_DETAILS_INDEX = 2;
 
     const [isOpenModal, toggleModal] = useToggle(false);
     const [modalContent, setModalContent] = useState({
@@ -24,7 +27,7 @@ const App = () => {
     });
 
     const modalContentHandler = (type, id = null) => {
-        setModalContent({type,id});
+        setModalContent({ type, id});
         toggleModal();
     };
 
@@ -33,7 +36,7 @@ const App = () => {
     return (
         <>
             <Header toggleHandler={modalContentHandler} flag={isHomePage} />
-            { isHomePage ? <Hero /> : <MovieDetais movie={movies[2]}/> }
+            { isHomePage ? <Hero /> : <MovieDetais movie={movies[MOVIE_DETAILS_INDEX]}/> }
             <MainContent>
                 <FilterBar options={data} />
                 <ResultsCount count={count} />
@@ -47,6 +50,7 @@ const App = () => {
             <Footer />
             { isOpenModal && 
                 <Modal 
+                    showModal={isOpenModal}
                     toggleHandler={modalContentHandler}
                     movies={movies}
                 />

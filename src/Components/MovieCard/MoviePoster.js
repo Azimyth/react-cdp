@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MoviePoster = props => (
-    <img className="movie-poster" src={props.poster} alt={props.alt} />
+const MoviePoster = ({ poster, alt}) => (
+    <img className="movie-poster" src={poster} alt={alt} />
 )
 
 MoviePoster.propTypes = {

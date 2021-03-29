@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import FilterItem from './FilterItem';
 import './Filters.scss';
 
-const Filters = (props) => (
+const Filters = ({ availableFilters }) => (
     <ul className="filters">
-        {props.availableFilters.map((filter) => (
+        {availableFilters.map((filter) => (
             <FilterItem
                 title={filter.title}
                 key={filter.title.toString()}

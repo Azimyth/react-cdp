@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './SimpleSearch.scss';
 import Icon from '../Icon/Icon';
-import {useToggle} from '../Hooks/useToggle'
+import {useToggle} from '../../hooks/useToggle'
 
 const SimpleSearch = () => {
     const [isInputShown, showInput] = useToggle(false);
@@ -18,7 +18,7 @@ const SimpleSearch = () => {
 
     return (
         <form className="simple-search">
-            {isInputShown && 
+            {isInputShown &&
                 <input 
                     className="search-control"
                     type="search"
@@ -26,7 +26,9 @@ const SimpleSearch = () => {
                     onChange={onChangeHandler}
                 />
             }
-            <button className="button" onClick={toggleInput}><Icon size={25} iconName="search"/></button>
+            <button className="button" onClick={toggleInput}>
+                <Icon size={25} iconName="search"/>
+            </button>
         </form>
     )
 }

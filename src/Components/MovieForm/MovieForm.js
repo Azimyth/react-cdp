@@ -3,14 +3,14 @@ import Button from '../Button/Button';
 import FormControl from './FormControl';
 import './MovieForm.scss';
 
-const MovieForm = props => {
+const MovieForm = ({ movie }) => {
     const optionsList = ['documentary', "comedy", "horror"];
-    const { id = '', title = '', release_date: date = '', overview = '', runtime = '' } = props.movie || {};
+    const { id = '', title = '', release_date: date = '', overview = '', runtime = '' } = movie || {} ;
 
     return (
         <form className="form-movie">
 
-            {props.movie && <FormControl
+            {movie && <FormControl
                 label='Movie id'
                 type='text'
                 name='Movie id'
@@ -66,8 +66,8 @@ const MovieForm = props => {
             />
 
             <div className="button-wrap">
-                <Button>Reset</Button>
-                <Button btnType="primary" >Submit</Button>
+                <Button btnType="default">Reset</Button>
+                <Button btnType="primary">Submit</Button>
             </div>
         </form>
     )

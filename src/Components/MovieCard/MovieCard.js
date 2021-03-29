@@ -5,8 +5,8 @@ import './MovieCard.scss';
 import MoviePoster from './MoviePoster';
 import MovieTitle from './MovieTitle';
 
-const MovieCard = props => {
-    const {poster, title, genres, publishDate, toggleHandler, id} = props;
+const MovieCard = ({ movie, toggleHandler }) => {
+    const { poster_path: poster, title, genres, release_date: publishDate, id } = movie;
 
     return (
         <article className="movie-card">
@@ -24,11 +24,13 @@ const MovieCard = props => {
 };
 
 MovieCard.propTypes = {
-    poster: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    publishDate: PropTypes.string.isRequired,
-    id: PropTypes.number,
+    movies: PropTypes.arrayOf(PropTypes.shape({
+        poster_path: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        genres: PropTypes.arrayOf(PropTypes.string),
+        release_date: PropTypes.string.isRequired,
+        id: PropTypes.number
+    })),
     toggleHandler: PropTypes.func
 };
 

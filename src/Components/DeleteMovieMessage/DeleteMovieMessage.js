@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 
-const DeleteMessage = props => (
+const DeleteMessage = ({ title }) => (
     <>
-        <p>{props.title}</p>
+        <p>{title}</p>
         <div className="button-wrap">
-            <Button btnType="primary" >
+            <Button btnType="primary">
                 Confirm
             </Button>
         </div>

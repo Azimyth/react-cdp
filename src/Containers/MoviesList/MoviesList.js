@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import './MoviesList.scss';
 
-const MoviesList = props => {
-    const { movies, toggleHandler } = props;
-
-    if (!movies) {
-        throw new Error('Data is missing!!!');
-    }
-
+const MoviesList = ({ movies, toggleHandler }) => {
     return (
         <section className="movies-list">
             {movies.map(movie => (

@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import './Modal.scss';
 import Icon from '../Icon/Icon';
 
-const Modal = props => {
-    let modalRoot = document.getElementById('modal-root');
-    
-    if (!modalRoot) {
-        modalRoot = document.createElement('div');
-        modalRoot.id = 'modal-root';
-        document.body.appendChild(modalRoot);
-    }
+const Modal = ({ toggleHandler, children }) => {
+    const modalRef = useRef();
 
     useEffect(() => {
         document.body.classList.add('modal-open');
@@ -19,18 +13,24 @@ const Modal = props => {
         return () => document.body.classList.remove('modal-open');
     }, []);
 
+    const closeModal = e => {
+        if (modalRef.current === e.target) {
+            toggleHandler();
+        }
+    }
+
     const modal = (
-        <div className="modal">
+        <div className="modal" ref={modalRef} onClick={closeModal}>
             <div className="modal__content">
-                <button onClick={props.toggleHandler} className="modal__close-btn">
+                <button onClick={toggleHandler} className="modal__close-btn">
                     <Icon size={35} iconName="close" />
                 </button>
-                {props.children}
+                {children}
             </div>
         </div>
     );
 
-    return ReactDOM.createPortal(modal, modalRoot);
+    return ReactDOM.createPortal(modal, document.body);
 }
 
 Modal.propTypes = {

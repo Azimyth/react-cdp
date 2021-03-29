@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import DropItem from './DropItem';
 import './DropList.scss';
 
-const DropList = props => (
+const DropList = ({ options }) => (
     <span className="drop-box">
         <select>
-            {props.options.map(value => (
+            {options.map(value => (
                 <DropItem value={value} key={value}/>
             ))}
         </select>
