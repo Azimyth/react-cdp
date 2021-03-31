@@ -1,0 +1,49 @@
+@import '../../Styles/common/variables.scss';
+
+.search {
+    margin: 0 0 20px;
+    width: 100%;
+    text-align: center;
+
+    @media (min-width: $tablet) {
+        display: flex;
+    }
+}
+
+.search-control {
+    margin: 0 0 20px;
+    width: 100%;
+    padding: 5px 20px;
+    height: 40px;
+    flex-grow: 1;
+    background-color: rgba(48, 48, 48, 0.9);
+    border-radius: $base-border-radius;
+    font-size: $base-font-size;
+    border: none;
+    color: $gray;
+    
+    @media (min-width: $tablet) {
+        margin: 0 20px 0 0;
+        height: 60px;
+        font-size: $medium-font-size;
+    }
+}
+
+.search-button {
+    padding: 8px;
+    min-width: 200px;
+    border: none;
+    border-radius: $base-border-radius;
+    background-color: $primary-color;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: $medium-font-size;
+    color: $white;
+    transition: background 0.3s;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $dark-red;
+    }
+}

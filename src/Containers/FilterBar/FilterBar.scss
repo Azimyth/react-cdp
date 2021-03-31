@@ -1,0 +1,19 @@
+@import '../../Styles/common/variables.scss';
+
+.filters-bar {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px 0 0;
+    border-bottom: 2px solid $solid-black;
+
+    @media (min-width: $tablet) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .filters {
+        @media (max-width: $tablet - 1px) {
+            margin: 0 0 20px;
+        }
+    }
+}

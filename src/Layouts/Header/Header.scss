@@ -1,0 +1,16 @@
+@import '../../Styles/common/variables.scss';
+
+.site-header {
+    position: absolute;
+    padding: 20px 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

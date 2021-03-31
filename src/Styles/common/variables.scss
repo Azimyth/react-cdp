@@ -1,0 +1,26 @@
+//color variables
+$white: #fff;
+$solid-black: #000;
+$black: #232323;
+$dark-gray: #424242;
+$gray: #555555;
+$light-gray: #a7a7a7;
+$primary-color: #f65251;
+$dark-red: #EF231C;
+
+//typography
+$base-font-size: 16px;
+$small-font-size: $base-font-size - 2px;
+$medium-font-size: $base-font-size + 4px;
+$large-font-size: $medium-font-size * 2;
+$base-font-family: 'Roboto', sans-serif;
+
+//commons styles
+$base-text-color: $white;
+$base-link-color: $primary-color;
+$body-background-color: $black;
+$base-border-radius: 5px;
+
+//breakpoints
+$tablet: 768px;
+$laptop: 1024px;

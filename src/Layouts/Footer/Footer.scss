@@ -1,0 +1,11 @@
+@import '../../Styles/common/variables.scss';
+
+.site-footer {
+    padding: 20px 0;
+    background-color: $gray;
+
+    .site-logo {
+        display: block;
+        margin: 0 auto;
+    }
+}
