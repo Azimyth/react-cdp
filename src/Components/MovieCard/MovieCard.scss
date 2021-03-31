@@ -1,8 +1,15 @@
-@import '../../Styles/common/variables.scss';
+@import '../../styles/common/variables.scss';
 
 .movie-card {
+    position: relative;
     margin-bottom: 30px;
     color: $light-gray;
+
+    &:hover {
+        .movie-action-bubble {
+            opacity: 1;
+        }
+    }
     
     &__poster {
         margin: 0 0 20px;
@@ -32,5 +39,17 @@
 
     &__genres {
         margin: 0;
+    }
+
+    .movie-action-bubble {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        &:focus {
+            opacity: 1;
+        }
     }
 }

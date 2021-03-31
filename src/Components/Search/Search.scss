@@ -1,4 +1,4 @@
-@import '../../Styles/common/variables.scss';
+@import '../../styles/common/variables.scss';
 
 .search {
     margin: 0 0 20px;
@@ -7,6 +7,11 @@
 
     @media (min-width: $tablet) {
         display: flex;
+    }
+    
+    .button {
+        min-width: 200px;
+        font-weight: bold;
     }
 }
 
@@ -26,24 +31,5 @@
         margin: 0 20px 0 0;
         height: 60px;
         font-size: $medium-font-size;
-    }
-}
-
-.search-button {
-    padding: 8px;
-    min-width: 200px;
-    border: none;
-    border-radius: $base-border-radius;
-    background-color: $primary-color;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: $medium-font-size;
-    color: $white;
-    transition: background 0.3s;
-    cursor: pointer;
-    
-    &:hover {
-        background-color: $dark-red;
     }
 }

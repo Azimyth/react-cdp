@@ -1,3 +1,6 @@
+import { func } from 'prop-types';
 import React from 'react';
 
-export default props => <div className="container">{props.children}</div>
+export default function Container(props) {
+    return <div className="container">{props.children}</div>
+};

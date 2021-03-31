@@ -1,0 +1,38 @@
+@import '../../../Styles/common/variables.scss';
+
+.drop {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    min-width: 150px;
+    background-color: $dark-gray;
+
+    &__button,
+    &__close {
+        border: 0;
+        background: none;
+        text-align: left;
+        color: $white;
+        cursor: pointer;
+    }
+
+    &__close {
+        align-self: flex-end;
+        padding: 5px;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    &__button {
+        padding: 10px 20px;
+
+        &:hover {
+            background-color: $primary-color;
+        }
+    }
+}
