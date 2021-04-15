@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import IcomoonReact from "icomoon-react";
 import iconSet from "../../selection.json";
 
-const Icon = props => (
+const Icon = ({ color, size, iconName }) => (
     <IcomoonReact 
         className="icon"
         iconSet={iconSet}
-        color={props.color}
-        size={props.size}
-        icon={props.iconName}
+        color={color}
+        size={size}
+        icon={iconName}
     />
 );
 

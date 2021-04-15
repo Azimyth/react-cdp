@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import './MovieActionDrop.scss';
 import Icon from '../../Icon/Icon';
 
-const MovieActionDrop = props => {
+const MovieActionDrop = ({ movieId, dropHandler, modalHandler }) => {
     const clickHandler = (modalType) => {
-        props.dropHandler();
-        props.modalHandler(modalType, props.movieId);
+        dropHandler();
+        modalHandler(modalType, movieId);
     };
 
     return (
         <div className="drop">
-            <button onClick={props.dropHandler} className="drop__close icon-clear">
+            <button onClick={dropHandler} className="drop__close icon-clear">
                 <Icon size={20} iconName="close" />
             </button>
             <button onClick={() => clickHandler('edit')} className="drop__button">Edit</button>
@@ -22,7 +22,8 @@ const MovieActionDrop = props => {
 
 MovieActionDrop.propTypes = {
     movieId: PropTypes.number,
-    toggleHandler: PropTypes.func
+    toggleHandler: PropTypes.func,
+    modalHandler: PropTypes.func
 };
 
 export default MovieActionDrop;

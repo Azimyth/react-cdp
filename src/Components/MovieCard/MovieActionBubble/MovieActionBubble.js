@@ -1,41 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useToggle } from '../../../hooks/useToggle';
 import MovieActionDrop from '../MovieActionDrop/MovieActionDrop';
 import Icon from '../../Icon/Icon';
 import './MovieActionBubble.scss';
 
-class MovieActionBubble extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            dropIsOpen: false
-        }
+const MovieActionBubble = ({ toggleHandler, movieId }) => {
+    const [isOpenDrop, setOpenDrop] = useToggle(false);
 
-        this.dropHandler = this.toggleDropdown.bind(this)
-    }
-
-    toggleDropdown() {
-        this.setState(state => ({
-            dropIsOpen: !state.dropIsOpen,
-        }))
-    }
-
-    render() {
-        return (
-            <>
-                <button className="movie-action-bubble" onClick={this.dropHandler}>
-                    <Icon size={20} iconName="options" />
-                </button>
-                {this.state.dropIsOpen && 
-                    <MovieActionDrop 
-                        dropHandler={this.dropHandler} 
-                        modalHandler={this.props.toggleHandler}
-                        movieId={this.props.movieId}
-                    />
-                }
-            </>
-        )
-    }
+    return (
+        <>
+            <button className="movie-action-bubble" onClick={setOpenDrop}>
+                <Icon size={20} iconName="options" />
+            </button>
+            {isOpenDrop && 
+                <MovieActionDrop 
+                    dropHandler={setOpenDrop}
+                    modalHandler={toggleHandler}
+                    movieId={movieId}
+                />
+            }
+        </>
+    )
 }
 
 MovieActionBubble.propTypes = {

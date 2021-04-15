@@ -4,8 +4,8 @@ import Filters from '../../components/Filters/Filters';
 import Sorting from '../../components/Sorting/Sorting';
 import './FilterBar.scss';
 
-const FilterBar = props => {
-    const {sort_options, available_filters} = props.options;
+const FilterBar = ({ options }) => {
+    const { sort_options, available_filters } = options;
     
     return (
         <div className="filters-bar">
