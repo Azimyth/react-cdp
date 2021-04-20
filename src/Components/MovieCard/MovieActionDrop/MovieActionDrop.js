@@ -1,12 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import './MovieActionDrop.scss';
 import Icon from '../../Icon/Icon';
+import { showModal } from '../../../store/actionCreators/toggleModal';
+import './MovieActionDrop.scss';
 
-const MovieActionDrop = ({ movieId, dropHandler, modalHandler }) => {
-    const clickHandler = (modalType) => {
+const MovieActionDrop = ({ movieId, dropHandler }) => {
+    const dispatch = useDispatch();
+
+    const clickHandler = (type) => {
         dropHandler();
-        modalHandler(modalType, movieId);
+        dispatch(showModal(type, movieId));
     };
 
     return (
@@ -22,8 +26,7 @@ const MovieActionDrop = ({ movieId, dropHandler, modalHandler }) => {
 
 MovieActionDrop.propTypes = {
     movieId: PropTypes.number,
-    toggleHandler: PropTypes.func,
-    modalHandler: PropTypes.func
+    dropHandler: PropTypes.func,
 };
 
 export default MovieActionDrop;

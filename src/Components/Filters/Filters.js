@@ -1,25 +1,60 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import FilterItem from './FilterItem';
+import { filterMovies } from '../../store/actionCreators/filterMovie';
 import './Filters.scss';
 
-const Filters = ({ availableFilters }) => (
-    <ul className="filters">
-        {availableFilters.map((filter) => (
-            <FilterItem
-                title={filter.title}
-                key={filter.title.toString()}
-                isActive={filter.active}
-            />
-        ))}
-    </ul>
-);
+const Filters = () => {
+    const [filterList, setFilterlist] = useState([
+        {
+            type: 'All',
+            active: true
+        },
+        {
+            type: 'Documentary',
+            active: false
+        },
+        {
+            type: 'Comedy',
+            active: false
+        },
+        {
+            type: 'Horror',
+            active: false
+        },
+        {
+            type: 'Crime',
+            active: false
+        }
+    ]);
+    const endpointParams = useSelector(state => state.movies.endpointParams);
+    const dispatch = useDispatch();
 
-Filters.propTypes = {
-    availableFilters: PropTypes.arrayOf(PropTypes.shape({
-        title: PropTypes.string,
-        active: PropTypes.bool
-    }))
+    const filterHandler = e => {
+        e.preventDefault();
+        const value = e.target.getAttribute('data-value');
+        setFilterlist(filterList.map(item => ({
+            type: item.type,
+            active: item.type == value
+        })));
+        dispatch(filterMovies({
+            ...endpointParams,
+            filter: (value === 'All') ? '' : value
+        }))
+    };
+
+    return (
+        <ul className="filters">
+            {filterList.map((filter) => (
+                <FilterItem
+                    title={filter.type}
+                    key={filter.type.toString()}
+                    isActive={filter.active}
+                    onclick={filterHandler}
+                />
+            ))}
+        </ul>
+    )
 };
 
 export default Filters;

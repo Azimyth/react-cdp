@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInitialData } from './store/actionCreators/getInitialData';
+
 import Hero from './components/Hero/Hero';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import ResultsCount from './components/ResultsCount/ResultsCount';
@@ -6,55 +9,35 @@ import MoviesList from './containers/MoviesList/MoviesList';
 import Footer from './layouts/Footer/Footer';
 import Header from './layouts/Header/Header';
 import MainContent from './layouts/Main';
-import FilterBar from './containers/FilterBar/FilterBar';
+import FilterBar from './layouts/FilterBar/FilterBar';
 import MovieDetais from './components/MovieDetails/MovieDetails';
-import withMovieAction from './components/withMovieAction/withMovieAction';
-import { useToggle } from './hooks/useToggle';
-
-import data from './MockData.json';
+import ModalContentManager from './components/ModalContentManager/ModalContentManager';
 
 const App = () => {
-    const {movies, count} = data;
+    const dispatch = useDispatch();
+    const endpointParams = useSelector(state => state.movies.endpointParams);
 
     //Adding this to show movie details page
-    const isHomePage = false;
+    const isHomePage = true;
     const MOVIE_DETAILS_INDEX = 2;
 
-    const [isOpenModal, toggleModal] = useToggle(false);
-    const [modalContent, setModalContent] = useState({
-        type: '',
-        id: null
-    });
-
-    const modalContentHandler = (type, id = null) => {
-        setModalContent({ type, id});
-        toggleModal();
-    };
-
-    const Modal = withMovieAction(modalContent.type, modalContent.id);
+    useEffect(() => {
+        dispatch(getInitialData(endpointParams));
+    }, []);
 
     return (
         <>
-            <Header toggleHandler={modalContentHandler} flag={isHomePage} />
+            <Header flag={isHomePage} />
             { isHomePage ? <Hero /> : <MovieDetais movie={movies[MOVIE_DETAILS_INDEX]}/> }
             <MainContent>
-                <FilterBar options={data} />
-                <ResultsCount count={count} />
+                <FilterBar />
+                <ResultsCount />
                 <ErrorBoundary>
-                    <MoviesList 
-                        movies={movies}
-                        toggleHandler={modalContentHandler}
-                    />
+                    <MoviesList />
                 </ErrorBoundary>
             </MainContent>
             <Footer />
-            { isOpenModal && 
-                <Modal 
-                    showModal={isOpenModal}
-                    toggleHandler={modalContentHandler}
-                    movies={movies}
-                />
-            }
+            <ModalContentManager />
         </>
     )
 }

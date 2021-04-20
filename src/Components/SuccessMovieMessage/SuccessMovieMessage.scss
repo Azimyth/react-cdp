@@ -1,0 +1,25 @@
+@import '../../styles/common/variables';
+
+.success-modal {
+    text-align: center;
+
+    .success-icon {
+        display: inline-block;
+        margin-bottom: 15px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: $primary-color;
+        line-height: 50px;
+        font-size: $large-font-size;
+        color: $white;
+
+        &:before {
+            content: '\2713';
+        }
+    }
+
+    p {
+        margin-bottom: 25px;
+    }
+}
