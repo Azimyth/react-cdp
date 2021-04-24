@@ -10,6 +10,10 @@
     @media (min-width: $laptop) {
         font-size: $medium-font-size;
     }
+
+    @media (max-width: 1439px) {
+        padding-top: 20px;
+    }
     
     .drop-box {
         position: relative;

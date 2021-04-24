@@ -36,10 +36,7 @@ MovieDetais.propTypes = {
         tagline: PropTypes.string.isRequired,
         overview: PropTypes.string.isRequired,
         runtime: PropTypes.number.isRequired,
-        vote_average: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number
-        ])
+        vote_average: PropTypes.number.isRequired
     })
 };
 

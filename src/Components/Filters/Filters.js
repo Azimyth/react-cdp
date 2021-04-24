@@ -25,8 +25,33 @@ const Filters = () => {
         {
             type: 'Crime',
             active: false
+        },
+        {
+            type: 'Adventure',
+            active: false
+        },
+        {
+            type: 'Animation',
+            active: false
+        },
+        {
+            type: 'Family',
+            active: false
+        },
+        {
+            type: 'Fantasy',
+            active: false
+        },
+        {
+            type: 'Action',
+            active: false
+        },
+        {
+            type: 'Drama',
+            active: false
         }
     ]);
+
     const endpointParams = useSelector(state => state.movies.endpointParams);
     const dispatch = useDispatch();
 

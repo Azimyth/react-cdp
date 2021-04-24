@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 const style = {
     p: {
-        marginBottom: '20px'
+        marginBottom: '25px'
     }
 }
 
