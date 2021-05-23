@@ -7,6 +7,10 @@ export const ApiServise = {
         return axios.get(`${axios.defaults.baseURL}/movies`, { params: data });
     },
 
+    getMovie(id) {
+        return axios.get(`${axios.defaults.baseURL}/movies/${id}`);
+    },
+
     post(data) {
         return axios.post(`${axios.defaults.baseURL}/movies`, data);
     },
