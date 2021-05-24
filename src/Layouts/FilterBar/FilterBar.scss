@@ -6,7 +6,7 @@
     padding: 20px 0 0;
     border-bottom: 2px solid $solid-black;
 
-    @media (min-width: $tablet) {
+    @media (min-width: 1440px) {
         display: flex;
         justify-content: space-between;
     }

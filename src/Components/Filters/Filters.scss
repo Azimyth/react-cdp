@@ -4,7 +4,7 @@
     display: flex;
     text-transform: uppercase;
     
-    @media (max-width: $tablet - 1px) {
+    @media (max-width: 1439px) {
         overflow-x: auto;
         border-bottom: 2px solid $solid-black;
     }
@@ -42,7 +42,7 @@
             }
         }
         
-        @media (min-width: $tablet) {
+        @media (min-width: 1440px) {
             &:before {
                 bottom: -2px;
             }
