@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import './Modal.scss';
 import Icon from '../Icon/Icon';
+import { useDispatch } from 'react-redux';
+import { hideModal } from '../../store/actionCreators/toggleModal';
+import './Modal.scss';
 
-const Modal = ({ toggleHandler, children }) => {
+const Modal = ({ children }) => {
     const modalRef = useRef();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         document.body.classList.add('modal-open');
@@ -13,16 +15,20 @@ const Modal = ({ toggleHandler, children }) => {
         return () => document.body.classList.remove('modal-open');
     }, []);
 
-    const closeModal = e => {
+    const outsideClickHandler = e => {
         if (modalRef.current === e.target) {
-            toggleHandler();
+            dispatch(hideModal());
         }
     }
 
+    const closeModal = () => {
+        dispatch(hideModal());
+    }
+
     const modal = (
-        <div className="modal" ref={modalRef} onClick={closeModal}>
+        <div className="modal" ref={modalRef} onClick={outsideClickHandler}>
             <div className="modal__content">
-                <button onClick={toggleHandler} className="modal__close-btn">
+                <button onClick={closeModal} className="modal__close-btn">
                     <Icon size={35} iconName="close" />
                 </button>
                 {children}
@@ -32,9 +38,5 @@ const Modal = ({ toggleHandler, children }) => {
 
     return ReactDOM.createPortal(modal, document.body);
 }
-
-Modal.propTypes = {
-    toggleHandler: PropTypes.func
-};
 
 export default Modal;

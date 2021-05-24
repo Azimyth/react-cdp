@@ -5,7 +5,7 @@ import MovieActionDrop from '../MovieActionDrop/MovieActionDrop';
 import Icon from '../../Icon/Icon';
 import './MovieActionBubble.scss';
 
-const MovieActionBubble = ({ toggleHandler, movieId }) => {
+const MovieActionBubble = ({ movieId }) => {
     const [isOpenDrop, setOpenDrop] = useToggle(false);
 
     return (
@@ -14,9 +14,8 @@ const MovieActionBubble = ({ toggleHandler, movieId }) => {
                 <Icon size={20} iconName="options" />
             </button>
             {isOpenDrop && 
-                <MovieActionDrop 
+                <MovieActionDrop
                     dropHandler={setOpenDrop}
-                    modalHandler={toggleHandler}
                     movieId={movieId}
                 />
             }
@@ -26,7 +25,6 @@ const MovieActionBubble = ({ toggleHandler, movieId }) => {
 
 MovieActionBubble.propTypes = {
     movieId: PropTypes.number,
-    toggleHandler: PropTypes.func
 };
 
 export default MovieActionBubble;

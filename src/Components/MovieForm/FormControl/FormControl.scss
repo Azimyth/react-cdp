@@ -1,4 +1,4 @@
-@import '../../styles/common/variables.scss';
+@import '../../../styles/common/variables.scss';
 
 .form-control {
     display: block;
@@ -7,13 +7,17 @@
     text-transform: uppercase;
     color: $primary-color;
 
-    input,
+    input:not([type="checkbox"]),
+    .drop-opener,
     select {
+        display: block;
         margin-top: 5px;
         padding: 5px 15px;
         border: 0;
         width: 100%;
         height: 45px;
+        line-height: 35px;
+        font-size: 14px;
         text-transform: initial;
         background-color: $dark-gray;
         color: $white;

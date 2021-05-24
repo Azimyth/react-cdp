@@ -1,23 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './FormControl.scss';
-import DropList from '../DropList/DropList';
 
 const FormControl = props => {
-    const { label, name, type, placeholder, value, optionsList, disabled } = props;
-    
-    const input = <input
-        type={type}
-        defaultValue={value}
-        name={name}
-        placeholder={placeholder}
-        disabled = {disabled}
-    />;
+    const { label, name, type, placeholder, value, disabled, onchange} = props;
 
     return (
         <label className="form-control">
             {label}
-            {type === 'select' ? <DropList options={optionsList} /> : input}
+            <input
+                type={type}
+                defaultValue={value}
+                name={name}
+                placeholder={placeholder}
+                onChange={onchange}
+                disabled = {disabled}
+            />
         </label>
     )
 };
@@ -31,6 +29,7 @@ FormControl.propTypes = {
     ]),
     name: PropTypes.string,
     placeholder: PropTypes.string,
+    onchange: PropTypes.func
 };
 
 export default FormControl;

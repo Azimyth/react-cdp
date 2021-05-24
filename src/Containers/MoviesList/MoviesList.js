@@ -1,16 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import './MoviesList.scss';
 
-const MoviesList = ({ movies, toggleHandler }) => {
+const MoviesList = ({ toggleHandler }) => {
+    const movies = useSelector(state => state.movies.movies);
+
     return (
         <section className="movies-list">
             {movies.map(movie => (
                 <MovieCard 
                     key={movie.id}
-                    toggleHandler={toggleHandler}
                     movie={movie}
+                    toggleHandler={toggleHandler}
                 />
             ))}
         </section>
