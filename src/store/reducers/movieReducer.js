@@ -1,5 +1,6 @@
 import {
     GET_INITIAL_DATA_SUCCESS,
+    GET_MOVIE_SUCCESS,
     ADD_MOVIE_SUCCESS,
     EDIT_MOVIE_SUCCESS,
     DELETE_MOVIE_SUCCESS,
@@ -12,10 +13,13 @@ const initialState = {
     movies: [],
     totalAmount: 0,
     error: null,
+    movieDetails: null,
     endpointParams: {
         sortBy: 'release_date',
         sortOrder: 'desc',
-        filter: ''
+        searchBy: 'title',
+        filter: '',
+        search: ''
     }
 };
 
@@ -24,8 +28,15 @@ export default function movieReducer(state = initialState, {type, payload}) {
         case GET_INITIAL_DATA_SUCCESS:
             return {
                 ...state,
-                movies: [...state.movies, ...payload.data],
+                movies: [...payload.data],
                 totalAmount: payload.totalAmount,
+                endpointParams: payload.params,
+                error: null
+            }
+        case GET_MOVIE_SUCCESS:
+            return {
+                ...state,
+                movieDetails: {...payload.data},
                 error: null
             }
         case ADD_MOVIE_SUCCESS:

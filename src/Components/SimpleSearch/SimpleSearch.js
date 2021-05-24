@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import './SimpleSearch.scss';
+import { useHistory } from 'react-router-dom';
+import { useToggle } from '../../hooks/useToggle';
 import Icon from '../Icon/Icon';
-import {useToggle} from '../../hooks/useToggle'
+import './SimpleSearch.scss';
 
 const SimpleSearch = () => {
-    const [isInputShown, showInput] = useToggle(false);
+    const history = useHistory();
     const [inputValue, setInputValue] = useState('');
+    const [isInputShown, showInput] = useToggle(false);
 
     const onChangeHandler = (e) => {
         setInputValue(e.target.value);
@@ -14,16 +16,32 @@ const SimpleSearch = () => {
     const toggleInput = (e) => {
         e.preventDefault();
         showInput();
-    }
+    };
+
+    const keyPressHandler = e => {
+        if (e.key === 'Enter') {
+            if (inputValue === '') {
+                history.push(`/`);
+            } else {
+                history.push(`/search/${inputValue}`)
+            }
+        }
+    };
+
+    const onSubmit = e => {
+        e.preventDefault();
+    };
 
     return (
-        <form className="simple-search">
+        <form className="simple-search" onSubmit={onSubmit}>
             {isInputShown &&
                 <input 
+                    autoFocus
                     className="search-control"
                     type="search"
                     value={inputValue}
                     onChange={onChangeHandler}
+                    onKeyPress={keyPressHandler}
                 />
             }
             <button className="button" onClick={toggleInput}>

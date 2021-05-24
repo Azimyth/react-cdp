@@ -1,16 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MovieActionBubble from './MovieActionBubble/MovieActionBubble';
 import MoviePoster from './MoviePoster';
 import MovieTitle from './MovieTitle';
 import './MovieCard.scss';
 
-const MovieCard = ({ movie, toggleHandler }) => {
+const MovieCard = ({ movie }) => {
     const { poster_path: poster, title, genres, release_date: publishDate, id } = movie;
+    const history = useHistory();
+
+    const redirection = () => {
+        history.push(`/film/${id}`)
+    };
     
     return (
         <article className="movie-card">
-            <MoviePoster poster={poster} alt={title} />
+            <MoviePoster poster={poster} alt={title} handler={redirection} />
             <div className="movie-card__content">
                 <div className="movie-card__description">
                     <MovieTitle title={title}/>
@@ -18,20 +24,19 @@ const MovieCard = ({ movie, toggleHandler }) => {
                 </div>
                 <span className="movie-card__release-date">{publishDate.slice(0, 4)}</span>
             </div>
-            <MovieActionBubble toggleHandler={toggleHandler} movieId={id} />
+            <MovieActionBubble movieId={id} />
         </article>
     )
 };
 
 MovieCard.propTypes = {
-    movies: PropTypes.arrayOf(PropTypes.shape({
+    movie: PropTypes.shape({
         poster_path: PropTypes.string,
         title: PropTypes.string.isRequired,
         genres: PropTypes.arrayOf(PropTypes.string),
         release_date: PropTypes.string.isRequired,
         id: PropTypes.number
-    })),
-    toggleHandler: PropTypes.func
+    })
 };
 
 export default MovieCard;
