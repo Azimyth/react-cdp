@@ -9,7 +9,7 @@ const sortMovieSuccess = (data, params) => ({
 
 export const sortMovies = (params) => {
     return dispatch => {
-        ApiServise.get(params)
+        return ApiServise.get(params)
         .then(res => {
             dispatch(sortMovieSuccess(res.data, params));
         })

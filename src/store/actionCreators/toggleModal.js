@@ -7,5 +7,8 @@ export const showModal = (type, id) => ({
 
 export const hideModal = () => ({
     type: HIDE_MODAL,
-    payload: {}
+    payload: {
+        type: null,
+        id: null
+    }
 });

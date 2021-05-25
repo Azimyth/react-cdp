@@ -5,14 +5,14 @@ import { hideModal } from './toggleModal';
 
 const editMovieSuccess = (data) => ({
     type: EDIT_MOVIE_SUCCESS,
-    payload: { ...data }
+    payload: data
 });
 
 export const editMovie = (movie) => {
     return dispatch => {
-        ApiServise.put(movie)
+        return ApiServise.put(movie)
         .then(res => {
-            dispatch(editMovieSuccess(res.data));
+            dispatch(editMovieSuccess(res));
             dispatch(hideModal());
         })
         .catch(err => {

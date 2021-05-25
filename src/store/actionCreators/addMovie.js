@@ -5,18 +5,19 @@ import { showModal } from './toggleModal';
 
 const addMovieSuccess = (data) => ({
     type: ADD_MOVIE_SUCCESS,
-    payload: { ...data }
+    payload: data
 });
 
 export const addMovie = (movie) => {
     return dispatch => {
-        ApiServise.post(movie)
-        .then(res => {
-            dispatch(addMovieSuccess(res.data));
-            dispatch(showModal('success'));
-        })
-        .catch(err => {
-            dispatch(requestFailure(err.message));
-        });
+        return ApiServise.post(movie)
+            .then(res => {
+                console.log(res.data)
+                dispatch(addMovieSuccess(res));
+                dispatch(showModal('success', null));
+            })
+            .catch(err => {
+                dispatch(requestFailure(err.message));
+            });
     };
 };

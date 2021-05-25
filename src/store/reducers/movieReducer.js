@@ -36,13 +36,13 @@ export default function movieReducer(state = initialState, {type, payload}) {
         case GET_MOVIE_SUCCESS:
             return {
                 ...state,
-                movieDetails: {...payload.data},
+                movieDetails: payload.data,
                 error: null
             }
         case ADD_MOVIE_SUCCESS:
             return {
                 ...state,
-                movies: [...state.movies, payload],
+                movies: [...state.movies, payload.data],
                 error: null
             }
         case EDIT_MOVIE_SUCCESS:

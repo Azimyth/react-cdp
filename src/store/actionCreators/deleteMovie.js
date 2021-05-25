@@ -10,7 +10,7 @@ const deleteMovieSuccess = (id) => ({
 
 export const deleteMovie = (id) => {
     return dispatch => {
-        ApiServise.delete(id)
+        return ApiServise.delete(id)
         .then(() => {
             dispatch(deleteMovieSuccess(id));
             dispatch(hideModal());

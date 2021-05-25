@@ -9,7 +9,7 @@ const getInitialDataSuccess = (data, params) => ({
 
 export const getInitialData = params => {
     return dispatch => {
-        ApiServise.get(params)
+        return ApiServise.get(params)
         .then(res => {
             dispatch(getInitialDataSuccess(res.data, params));
         })

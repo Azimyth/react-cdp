@@ -9,7 +9,7 @@ const filterMovieSuccess = (data, params) => ({
 
 export const filterMovies = (params) => {
     return dispatch => {
-        ApiServise.get(params)
+        return ApiServise.get(params)
         .then(res => {
             dispatch(filterMovieSuccess(res.data, params));
         })
