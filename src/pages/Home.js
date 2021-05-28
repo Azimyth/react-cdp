@@ -4,7 +4,7 @@ import ResultsCount from '../components/ResultsCount/ResultsCount';
 import MoviesList from '../containers/MovieList/MoviesList';
 import FilterBar from '../layouts/FilterBar/FilterBar';
 import MainContent from '../layouts/Main';
-import { TopContainer } from '../containers/MoviesList/TopContainer/TopContainer';
+import { TopContainer } from '../containers/TopContainer/TopContainer';
 
 export default () => {
     return (

@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getMovie } from '../../../store/actionCreators/getMovie';
-import Hero from '../../../components/Hero/Hero';
-import MovieDetais from '../../../components/MovieDetails/MovieDetails';
+import { getMovie } from '../../store/actionCreators/getMovie';
+import Hero from '../../components/Hero/Hero';
+import loadable from '@loadable/component';
+
+const MovieDetails = loadable(() => import("../../components/MovieDetails/MovieDetails"), {
+    fallback: <div>Loading...</div>,
+    ssr: false
+});
 
 export const TopContainer = () => {
     const { id } = useParams();
@@ -17,7 +22,7 @@ export const TopContainer = () => {
 
     return (
         <>
-            { id ? <MovieDetais /> : <Hero /> }
+            { id ? <MovieDetails /> : <Hero /> }
         </>
     )
 }

@@ -10,7 +10,7 @@ import DatePicker from "react-datepicker";
 
 import * as Yup from 'yup';
 import './MovieForm.scss';
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 
 const MovieForm = ({ movie = {}, type }) => {
     const availableGenres = ['Documentary', "Comedy", "Horror", "Crime", "Adventure", "Animation", "Family", "Fantasy", "Science Fiction", "Action", "Drama"];
