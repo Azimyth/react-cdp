@@ -39,10 +39,23 @@ export default function serverRenderer() {
             const searchQuery = req.url.split('/search/')[1];
 
             const initialData = await ApiServise.get({
+                searchBy: 'title',
                 search: searchQuery
             }).then((response) => { return response.data });
 
-            initialState = { movies: { movies: initialData } };
+            initialState = { movies: {
+                movies: [...initialData.data],
+                totalAmount: initialData.totalAmount,
+                movieDetails: null,
+                endpointParams: {
+                    sortBy: 'release_date',
+                    sortOrder: 'desc',
+                    searchBy: 'title',
+                    filter: '',
+                    search: searchQuery
+                },
+                error: null
+            }};
         }
 
         const store = configureStore(initialState);

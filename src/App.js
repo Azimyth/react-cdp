@@ -12,6 +12,8 @@ import Footer from './layouts/Footer/Footer';
 import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 
+import "./styles/common/common.scss";
+
 const App = ({ Router, location, context, store }) => {
     return(
         <Provider store={store}>

@@ -5,11 +5,10 @@ module.exports = {
     mode: process.env.NODE_ENV,
     output: {
         filename: 'js/[name].js',
-        path: path.resolve(__dirname, './dist/client'),
-        // publicPath: '/public/'
+        path: path.resolve('./public'),
     },
     resolve: {
-        extensions: ['.js', '.jsx', 'css'],
+        extensions: ['.js', '.jsx'],
         alias: {
             'react-dom': '@hot-loader/react-dom',
         },
@@ -28,9 +27,6 @@ module.exports = {
                         presets: [
                             '@babel/preset-env',
                             '@babel/preset-react'
-                        ],
-                        plugins: [
-                            "@babel/plugin-proposal-class-properties"
                         ]
                     }
                 }

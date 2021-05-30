@@ -1,11 +1,6 @@
-const path = require('path');
 const { merge } = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const common = require('./webpack.common.config.js');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const isDevMod = process.env.NODE_ENV === 'development';
 
 module.exports = merge(common, {
     name: 'server',
@@ -14,18 +9,14 @@ module.exports = merge(common, {
     externals: [nodeExternals()],
     output: {
         filename: 'serverRenderer.js',
-        path: path.resolve(__dirname, './dist/server'),
-        libraryTarget: 'commonjs2',
+        libraryTarget: 'commonjs2'
     },
     module: {
         rules: [
             {
-                test: /\.s[ac]ss$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-            },
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                test: /\.(s[ac]ss|css)$/i,
+                include: /src/,
+                use: ["css-loader", "sass-loader"]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
@@ -33,15 +24,10 @@ module.exports = merge(common, {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: '/img/',
-                        emitFile: false
+                        outputPath: 'assets/'
                     },
                 },
             },
         ],
     },
-    plugins: [
-        !isDevMod && new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin()
-    ].filter(Boolean),
 });

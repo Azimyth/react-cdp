@@ -5,8 +5,6 @@ import { loadableReady } from '@loadable/component'
 import App from "./App";
 import configureStore from "./store/store";
 
-import "./styles/common/common.scss";
-
 const store = configureStore(window.PRELOADED_STATE);
 
 loadableReady(() => { hydrate(

@@ -24,24 +24,28 @@ module.exports = merge(common, {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: '/img/'
+                        outputPath: 'assets/'
                     },
                 },
             },
             {
-                test: /\.s[ac]ss$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-            },
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                test: /\.(s[ac]ss|css)$/i,
+                include: /src/,
+                use: [
+                    isDevMod && MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
         ],
     },
-
+    
     plugins: [
-        !isDevMod && new CleanWebpackPlugin('./public', { root: path.resolve(__dirname, '../') }),
+        !isDevMod && new CleanWebpackPlugin(),
         isDevMod && new webpack.HotModuleReplacementPlugin(),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css',
+          }
+      ),
     ].filter(Boolean)
 });
