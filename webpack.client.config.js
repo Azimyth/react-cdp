@@ -1,4 +1,3 @@
-const path = require('path');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.config.js');
@@ -32,7 +31,7 @@ module.exports = merge(common, {
                 test: /\.(s[ac]ss|css)$/i,
                 include: /src/,
                 use: [
-                    isDevMod && MiniCssExtractPlugin.loader,
+                    isDevMod ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader'
                 ]

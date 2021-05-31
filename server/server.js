@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "development") {
     server.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === "client")));
     server.use(webpackHotServerMiddleware(compiler));
 } else {
-    const serverRenderer = require("./dist/server/serverRenderer").default;
+    const serverRenderer = require('../public/js/serverRenderer').default;
 
     server.use(express.static('public'));
     server.use(serverRenderer());
